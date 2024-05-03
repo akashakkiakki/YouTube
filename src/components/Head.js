@@ -10,7 +10,7 @@ const Head = () => {
 
   return (
     <div className="grid grid-flow-col shadow-lg p-5 m-2">
-      <div className="flex col-span-1">
+      <div className="flex col-span-1 cursor-pointer">
         <img
           className="h-8 pr-5"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"

@@ -98,3 +98,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   - git remote -v
   - git remote set-url origin git@github.com:akashakkiakki/YouTube.git
 
+
+# Setup routing
+- npm i react-router-dom
