@@ -93,3 +93,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   - create store, create slice
   - import slice in store
   - use store in app.js in provider
+
+  # git setup
+  - git remote -v
+  - git remote set-url origin git@github.com:akashakkiakki/YouTube.git
+
