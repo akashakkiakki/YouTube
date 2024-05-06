@@ -6,6 +6,9 @@ export const YOUTUBE_VIDEO_API =
 export const YOUTUBE_SEARCH_SUGGESTION_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&q=";
 
-  export const YOUTUBE_SEARCH_API =
+export const YOUTUBE_SEARCH_API =
   "https://www.googleapis.com/youtube/v3/search?&part=snippet&maxResults=50&key=" +
-  GOOGLE_API_KEY + "&q=";
+  GOOGLE_API_KEY +
+  "&q=";
+
+export const OFFSET_LIVE_CHAT = 15;
