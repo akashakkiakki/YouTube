@@ -16,11 +16,10 @@ const Head = () => {
   const searchCache = useSelector((store) => store.search);
 
   const searchMovies = async (searchText) => {
-    console.log('clicied',searchText);
+    setShowSuggestions(false);
     const data = await fetch(YOUTUBE_SEARCH_API + searchText);
     const json = await data.json();
     dispatch(addPopularMovies(json.items));
-    setShowSuggestions(false);
   };
 
   const getSearchSuggestions = async () => {
