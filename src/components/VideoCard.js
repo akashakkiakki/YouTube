@@ -18,4 +18,14 @@ const VideoCard = ({ info }) => {
   );
 };
 
+// heigher order component takes a component and return a component
+
+// export const HigherOrderComponent = ({ info }) => {
+//   return (
+//     <div className="border border-red-600">
+//       <VideoCard info={info} />
+//     </div>
+//   );
+// };
+
 export default VideoCard;
