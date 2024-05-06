@@ -16,15 +16,20 @@ const VideoContainer = () => {
   };
 
   useEffect(() => {
-    getVideos();
+    if (!videos) getVideos();
   }, []);
 
   return (
     <div className="flex flex-wrap">
       {/* <HigherOrderComponent info={videos[0]} /> */}
       {videos &&
-        videos.map((video,index) => (
-          <Link key={index} to={"/watch?v=" + video?.id}>
+        videos.map((video, index) => (
+          <Link
+            key={index}
+            to={
+              "/watch?v=" + (video?.id?.videoId ? video.id.videoId : video.id)
+            }
+          >
             <div>
               <VideoCard info={video} />
             </div>
