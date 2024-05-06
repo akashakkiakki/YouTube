@@ -16,10 +16,11 @@ const Head = () => {
   const searchCache = useSelector((store) => store.search);
 
   const searchMovies = async (searchText) => {
-    console.log('clicied');
+    console.log('clicied',searchText);
     const data = await fetch(YOUTUBE_SEARCH_API + searchText);
     const json = await data.json();
     dispatch(addPopularMovies(json.items));
+    setShowSuggestions(false);
   };
 
   const getSearchSuggestions = async () => {
@@ -71,7 +72,7 @@ const Head = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setShowSuggestions(false)}
+            // onBlur={() => setShowSuggestions(false)}
           />
           <button onClick={() => searchMovies(searchQuery)} className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5">
             Search
@@ -82,11 +83,12 @@ const Head = () => {
             <div className="w-[41%] absolute bg-white shadow-lg py-2 px-5 rounded-xl border border-gray-200">
               {suggestions && (
                 <ul>
-                  {suggestions.map((suggestion) => (
+                  {suggestions.map((suggestion,index) => (
                     <li
-                      key={suggestion}
+                      key={index}
                       className="p-1 m-1 cursor-pointer"
-                    >
+                      onClick={() => searchMovies(suggestion)}
+                      >
                       {suggestion}
                     </li>
                   ))}

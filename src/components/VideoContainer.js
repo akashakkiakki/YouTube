@@ -23,8 +23,8 @@ const VideoContainer = () => {
     <div className="flex flex-wrap">
       {/* <HigherOrderComponent info={videos[0]} /> */}
       {videos &&
-        videos.map((video) => (
-          <Link key={video.id} to={"/watch?v=" + video?.id}>
+        videos.map((video,index) => (
+          <Link key={index} to={"/watch?v=" + video?.id}>
             <div>
               <VideoCard info={video} />
             </div>
