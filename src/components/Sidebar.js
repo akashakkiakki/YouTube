@@ -8,10 +8,10 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className="w-[12%]">
-      <div className="p-5 shadow-lg">
+    <div className="w-[15%] text-lg hidden sm:block">
+      <div className="p-5 shadow-lg h-[900px]">
         <div className="">
-          <ul>
+          <ul className="">
             <Link to="/">
               <li>Home</li>
             </Link>
@@ -35,6 +35,15 @@ const Sidebar = () => {
             <li>Shopping</li>
             <li>Live</li>
             <li>News</li>
+          </ul>
+        </div>
+        <div>
+          <h1 className="font-bold pt-5">Popular</h1>
+          <ul>
+            <li>New Popular</li>
+            <li>Year Best</li>
+            <li>Live Drama</li>
+            <li>Latest News</li>
           </ul>
         </div>
       </div>

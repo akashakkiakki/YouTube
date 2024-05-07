@@ -10,7 +10,7 @@ const MainContainer = () => {
     dispatch(openMenu());
   }, []);
   return (
-    <div className="w-[85%]">
+    <div className="w-full sm:w-[85%]">
       <ButtonList />
       <VideoContainer />
     </div>

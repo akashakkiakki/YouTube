@@ -35,35 +35,6 @@ const CommentContainer = () => {
       id: "comment1",
       text: "This is the first comment",
       author: "User1",
-      replies: [
-        {
-          id: "reply1",
-          text: "Reply to the first comment",
-          author: "User2",
-        },
-        {
-          id: "reply2",
-          text: "Another reply to the first comment",
-          author: "User3",
-        },
-      ],
-    },
-    {
-      id: "comment1",
-      text: "This is the first comment",
-      author: "User1",
-      replies: [
-        {
-          id: "reply1",
-          text: "Reply to the first comment",
-          author: "User2",
-        },
-        {
-          id: "reply2",
-          text: "Another reply to the first comment",
-          author: "User3",
-        },
-      ],
     },
   ];
 

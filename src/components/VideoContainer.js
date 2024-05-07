@@ -20,14 +20,17 @@ const VideoContainer = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-center">
       {/* <HigherOrderComponent info={videos[0]} /> */}
       {videos &&
         videos.map((video, index) => (
           <Link
             key={index}
             to={
-              "/watch?v=" + (video?.id?.videoId ? video.id.videoId : video.id)
+              "/watch?v=" +
+              (video?.id?.videoId ? video.id.videoId : video.id) +
+              "&channelId=" +
+              video?.snippet?.channelId
             }
           >
             <div>

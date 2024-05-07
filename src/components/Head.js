@@ -48,62 +48,106 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col shadow-lg p-5 m-2">
-      <div className="flex col-span-1 cursor-pointer">
-        <img
-          className="h-8 pr-5"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
-          alt="menu"
-          onClick={toggleMenuHandler}
-        />
-        <img
-          className="h-8 mx-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_of_YouTube_%282013-2015%29.svg/1002px-Logo_of_YouTube_%282013-2015%29.svg.png?20160628134147"
-          alt="logo"
-        />
-      </div>
-      <div className="col-span-10 text-center px-10">
-        <div>
-          <input
-            className="w-1/2 border border-gray-200 p-2 rounded-l-full"
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setShowSuggestions(true)}
-            // onBlur={() => setShowSuggestions(false)}
+    <div className="flex flex-col">
+      <div className="flex justify-between shadow-lg p-5 m-2">
+        <div className="flex col-span-1 cursor-pointer">
+          <img
+            className="h-8 pr-5"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
+            alt="menu"
+            onClick={toggleMenuHandler}
           />
-          <button onClick={() => searchMovies(searchQuery)} className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5">
-            Search
-          </button>
+          <img
+            className="h-8 mx-2"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_of_YouTube_%282013-2015%29.svg/1002px-Logo_of_YouTube_%282013-2015%29.svg.png?20160628134147"
+            alt="logo"
+          />
         </div>
-        {showSuggestions && (
-          <div className="text-start flex justify-center">
-            <div className="w-[41%] absolute bg-white shadow-lg py-2 px-5 rounded-xl border border-gray-200">
-              {suggestions && (
-                <ul>
-                  {suggestions.map((suggestion,index) => (
-                    <li
-                      key={index}
-                      className="p-1 m-1 cursor-pointer"
-                      onClick={() => searchMovies(suggestion)}
-                      >
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+        <div className="w-1/2 text-center px-10 hidden sm:block">
+          <div>
+            <input
+              className="w-[70%] border border-gray-200 p-2 rounded-l-full"
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+            />
+            <button
+              onClick={() => searchMovies(searchQuery)}
+              className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5"
+            >
+              Search
+            </button>
           </div>
-        )}
+          {showSuggestions && (
+            <div className="text-start flex justify-center">
+              <div className="w-[36%] absolute bg-white shadow-lg py-2 px-5 rounded-xl border border-gray-200">
+                {suggestions && (
+                  <ul>
+                    {suggestions.map((suggestion, index) => (
+                      <li
+                        key={index}
+                        className="p-1 m-1 cursor-pointer"
+                        onClick={() => searchMovies(suggestion)}
+                      >
+                        {suggestion}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="col-span-1">
+          <img
+            className="h-8"
+            src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+            alt="user"
+          />
+        </div>
       </div>
-      <div className="col-span-1">
-        <img
-          className="h-8"
-          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-          alt="user"
-        />
-      </div>
+
+      <div className="w-full text-center px-10 block sm:hidden">
+          <div>
+            <input
+              className="w-[60%] border border-gray-200 p-2 rounded-l-full"
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+              // onBlur={() => setShowSuggestions(false)}
+            />
+            <button
+              onClick={() => searchMovies(searchQuery)}
+              className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5"
+            >
+              Search
+            </button>
+          </div>
+          {showSuggestions && (
+            <div className="text-start flex justify-center">
+              <div className="w-[95%] absolute bg-white shadow-lg py-2 px-5 rounded-xl border border-gray-200">
+                {suggestions && (
+                  <ul>
+                    {suggestions.map((suggestion, index) => (
+                      <li
+                        key={index}
+                        className="p-1 m-1 cursor-pointer"
+                        onClick={() => searchMovies(suggestion)}
+                      >
+                        {suggestion}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      
     </div>
   );
 };
