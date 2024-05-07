@@ -23,6 +23,7 @@ const Head = () => {
   };
 
   const getSearchSuggestions = async () => {
+    if (!searchQuery) return null;
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
@@ -30,11 +31,16 @@ const Head = () => {
   };
 
   useEffect(() => {
+    const isMobileDevice = () => {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+    };
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
       } else {
-        getSearchSuggestions();
+        if (!isMobileDevice()) getSearchSuggestions();
       }
     }, 200);
 
@@ -110,44 +116,24 @@ const Head = () => {
       </div>
 
       <div className="w-full text-center px-10 block sm:hidden">
-          <div>
-            <input
-              className="w-[60%] border border-gray-200 p-2 rounded-l-full"
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setShowSuggestions(true)}
-              // onBlur={() => setShowSuggestions(false)}
-            />
-            <button
-              onClick={() => searchMovies(searchQuery)}
-              className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5"
-            >
-              Search
-            </button>
-          </div>
-          {showSuggestions && (
-            <div className="text-start flex justify-center">
-              <div className="w-[95%] absolute bg-white shadow-lg py-2 px-5 rounded-xl border border-gray-200">
-                {suggestions && (
-                  <ul>
-                    {suggestions.map((suggestion, index) => (
-                      <li
-                        key={index}
-                        className="p-1 m-1 cursor-pointer"
-                        onClick={() => searchMovies(suggestion)}
-                      >
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
-          )}
+        <div>
+          <input
+            className="w-[60%] border border-gray-200 p-2 rounded-l-full"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            // onBlur={() => setShowSuggestions(false)}
+          />
+          <button
+            onClick={() => searchMovies(searchQuery)}
+            className="border border-gray-200 py-2 rounded-r-full bg-gray-100 px-5"
+          >
+            Search
+          </button>
         </div>
-      
+      </div>
     </div>
   );
 };
